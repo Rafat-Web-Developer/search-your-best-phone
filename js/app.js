@@ -12,8 +12,20 @@ const removeSection = getId => {
 
 // display all phones section
 const displayAllPhones = phones => {
+    const showPhonesDiv = document.getElementById('showPhonesDiv');
     phones.forEach(phone => {
-        console.log(phone);
+        const div = document.createElement('div');
+        div.classList.add('col');
+        div.innerHTML = `
+            <div class="card border-success border-3 h-100">
+                <img src="${phone.image}" class="card-img-top p-4" alt="${phone.phone_name}_img">
+                <div class="card-body bg-success text-white">
+                <h5 class="card-title">${phone.phone_name}</h5>
+                <p class="card-text">${phone.brand}</p>
+                </div>
+            </div>
+        `;
+        showPhonesDiv.appendChild(div);
     });
 }
 
