@@ -90,7 +90,7 @@ const displayAllPhones = phones => {
                 <img src="${phone.image}" class="card-img-top p-4" alt="${phone.phone_name}_img">
                 <div class="card-body bg-success text-white">
                     <h5 class="card-title">${phone.phone_name}</h5>
-                    <p class="card-text">${phone.brand}</p>
+                    <p class="card-text" id="brandName">${phone.brand}</p>
                 </div>
                 <div class="card-footer">
                     <div class="d-grid">
@@ -133,4 +133,34 @@ const searchPhone = () => {
     const text = searchText.toLowerCase();
     searchPhoneTextField.value = '';
     loadPhones(text);
-}
+};
+
+// display more phone in same brand
+const showMoreResult = async getText => {
+    removeSection('notFound');
+    removeSection('showPhoneDetails');
+    removeSection('showAllPhones');
+    showSection('loading');
+    const url = `https://openapi.programming-hero.com/api/phones?search=${getText}`;
+    const response = await fetch(url);
+    const data = await response.json();
+    if(data.status === true){
+        removeSection('notFound');
+        removeSection('showPhoneDetails');
+        removeSection('loading');
+        showSection('showAllPhones');
+        displayAllPhones(data.data);
+    }else{
+        removeSection('showPhoneDetails');
+        removeSection('showAllPhones');
+        removeSection('loading');
+        showSection('notFound');
+    }
+};
+
+// show more onclick function
+const showMore = () => {
+    const brandNameField = document.getElementById('brandName');
+    const text = brandNameField.innerText;
+    showMoreResult(text);
+};
