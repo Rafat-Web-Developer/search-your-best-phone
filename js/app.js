@@ -1,14 +1,16 @@
-
+// display section
 const showSection = getId => {
     const element = document.getElementById(getId);
     element.classList.remove('d-none');
 };
 
+// display none section
 const removeSection = getId => {
     const element = document.getElementById(getId);
     element.classList.add('d-none');
 };
 
+// display all phones section
 const displayAllPhones = phones => {
     console.log(phones);
 }
