@@ -11,7 +11,6 @@ const removeSection = getId => {
 };
 
 const displayPhoneDetails = details => {
-    console.log(details);
     const showPhoneDetails = document.getElementById('showPhoneDetails');
     showPhoneDetails.textContent = '';
     showPhoneDetails.innerHTML = `
@@ -117,7 +116,7 @@ const loadPhones = async (getSearchText) => {
         removeSection('showPhoneDetails');
         removeSection('loading');
         showSection('showAllPhones');
-        displayAllPhones(data.data);
+        displayAllPhones(data.data.slice(0, 20));
     }else{
         removeSection('showPhoneDetails');
         removeSection('showAllPhones');
