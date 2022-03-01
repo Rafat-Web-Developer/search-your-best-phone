@@ -15,13 +15,16 @@ const displayAllPhones = phones => {
 
 // call api for search all phones
 const loadPhones = async (getSearchText) => {
+    showSection('loading');
     const url = `https://openapi.programming-hero.com/api/phones?search=${getSearchText}`;
     const response = await fetch(url);
     const data = await response.json();
     if(data.status == true){
+        removeSection('loading');
         removeSection('notFound');
         displayAllPhones(data);
     }else{
+        removeSection('loading');
         removeSection('showPhoneDetails');
         removeSection('showAllPhones');
         showSection('notFound');
