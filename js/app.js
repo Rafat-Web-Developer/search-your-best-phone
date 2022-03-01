@@ -13,6 +13,7 @@ const removeSection = getId => {
 // display all phones section
 const displayAllPhones = phones => {
     const showPhonesDiv = document.getElementById('showPhonesDiv');
+    showPhonesDiv.textContent = '';
     phones.forEach(phone => {
         const div = document.createElement('div');
         div.classList.add('col');
