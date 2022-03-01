@@ -10,6 +10,18 @@ const removeSection = getId => {
     element.classList.add('d-none');
 };
 
+// show phone details
+const viewPhoneDetails = async (getSlug) => {
+    const url = `https://openapi.programming-hero.com/api/phone/${getSlug}`;
+    const res = await fetch(url);
+    const data = await res.json();
+    if(data.status === true){
+        console.log(data);
+    }else{
+        console.log(data.status);
+    }
+}
+
 // display all phones section
 const displayAllPhones = phones => {
     const showPhonesDiv = document.getElementById('showPhonesDiv');
@@ -26,7 +38,7 @@ const displayAllPhones = phones => {
                 </div>
                 <div class="card-footer">
                     <div class="d-grid">
-                        <button class="btn btn-success" type="button">View Phone Details</button>
+                        <button class="btn btn-success" type="button" onclick="viewPhoneDetails('${phone.slug}')">View Phone Details</button>
                     </div>
                 </div>
             </div>
