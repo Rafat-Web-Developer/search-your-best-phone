@@ -21,8 +21,13 @@ const displayAllPhones = phones => {
             <div class="card border-success border-3 h-100">
                 <img src="${phone.image}" class="card-img-top p-4" alt="${phone.phone_name}_img">
                 <div class="card-body bg-success text-white">
-                <h5 class="card-title">${phone.phone_name}</h5>
-                <p class="card-text">${phone.brand}</p>
+                    <h5 class="card-title">${phone.phone_name}</h5>
+                    <p class="card-text">${phone.brand}</p>
+                </div>
+                <div class="card-footer">
+                    <div class="d-grid">
+                        <button class="btn btn-success" type="button">View Phone Details</button>
+                    </div>
                 </div>
             </div>
         `;
