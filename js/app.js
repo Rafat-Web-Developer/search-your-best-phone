@@ -24,7 +24,7 @@ const displayPhoneDetails = details => {
                     <div class="card-body text-white">
                         <h5 class="card-title">${details.name}</h5>
                         <p class="card-text">Brand Name : ${details.brand}</p>
-                        <p class="card-text">Release Date : ${details.releaseDate}</p>
+                        <p class="card-text">Release Date : ${details.releaseDate ? details.releaseDate : 'No release date.'}</p>
                         <div class="w-100 p-2 bg-warning rounded">
                             <h5 class="text-success">Main Features</h5>
                             <span class="m-1 badge bg-success w-100 text-start text-wrap">Chip Set : ${details.mainFeatures.chipSet}</span>
