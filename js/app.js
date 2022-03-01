@@ -12,23 +12,30 @@ const removeSection = getId => {
 
 // display all phones section
 const displayAllPhones = phones => {
-    console.log(phones);
+    phones.forEach(phone => {
+        console.log(phone);
+    });
 }
 
 // call api for search all phones
 const loadPhones = async (getSearchText) => {
+    removeSection('notFound');
+    removeSection('showPhoneDetails');
+    removeSection('showAllPhones');
     showSection('loading');
     const url = `https://openapi.programming-hero.com/api/phones?search=${getSearchText}`;
     const response = await fetch(url);
     const data = await response.json();
-    if(data.status == true){
-        removeSection('loading');
+    if(data.status === true){
         removeSection('notFound');
-        displayAllPhones(data);
-    }else{
+        removeSection('showPhoneDetails');
         removeSection('loading');
+        showSection('showAllPhones');
+        displayAllPhones(data.data);
+    }else{
         removeSection('showPhoneDetails');
         removeSection('showAllPhones');
+        removeSection('loading');
         showSection('notFound');
     }
 };
