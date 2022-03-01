@@ -1,15 +1,16 @@
-// display section
+// display section (Remove d-none bootstrap class)
 const showSection = getId => {
     const element = document.getElementById(getId);
     element.classList.remove('d-none');
 };
 
-// display none section
+// display none section (Add d-none bootstrap class)
 const removeSection = getId => {
     const element = document.getElementById(getId);
     element.classList.add('d-none');
 };
 
+// display phone details section
 const displayPhoneDetails = details => {
     const showPhoneDetails = document.getElementById('showPhoneDetails');
     showPhoneDetails.textContent = '';
@@ -129,6 +130,7 @@ const loadPhones = async (getSearchText) => {
 const searchPhone = () => {
     const searchPhoneTextField = document.getElementById('searchPhoneText');
     const searchText = searchPhoneTextField.value;
+    const text = searchText.toLowerCase();
     searchPhoneTextField.value = '';
-    loadPhones(searchText);
+    loadPhones(text);
 }
